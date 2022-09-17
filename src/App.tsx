@@ -1,11 +1,38 @@
+import React from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React from "react";
 import { Euler, Vector3 } from "three";
+import { useControls } from "leva";
 import "./App.css";
 import Branch from "./branch";
 
 function App() {
+  const { depth, branching, angle, noise } = useControls({
+    depth: {
+      value: 3,
+      min: 1,
+      max: 5,
+      step: 1,
+    },
+    branching: {
+      value: 3,
+      min: 1,
+      max: 6,
+      step: 1,
+    },
+    angle: {
+      value: 45,
+      min: 0,
+      max: 360,
+      step: 1,
+    },
+    noise: {
+      value: 0,
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
+  });
   return (
     <div className="App">
       <Canvas>
@@ -16,10 +43,10 @@ function App() {
           position={new Vector3(0, 0, 0)}
           rotation={new Euler(0, 0, 0)}
           scale={1}
-          depth={4}
-          branching={6}
-          angle={Math.PI / 4}
-          noise={0}
+          depth={depth}
+          branching={branching}
+          angle={(angle / 180) * Math.PI}
+          noise={noise}
         />
       </Canvas>
     </div>
