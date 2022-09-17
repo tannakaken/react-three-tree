@@ -16,11 +16,7 @@ const Tree = ({ depth, branching, angle, noise = 0 }: Props) => {
   const scale = 1;
 
   useHitTest((hitMatrix, _) => {
-    hitMatrix.decompose(
-      position,
-      new Quaternion().setFromEuler(rotation),
-      new Vector3(scale, scale, scale)
-    );
+    position.applyMatrix4(hitMatrix);
   });
   return (
     <Branch
