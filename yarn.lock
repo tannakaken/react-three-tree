@@ -1889,6 +1889,14 @@
     suspend-react "^0.0.8"
     zustand "^3.7.1"
 
+"@react-three/xr@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@react-three/xr/-/xr-5.0.0.tgz#0a9725c525a6b5c550ff0ff8719bd22a5202471c"
+  integrity sha512-ylmGgG7UZ1954+9zPeR13XVZu5Fbt0Hf6tECHAwVQkNMnBStl00gKVWBPyYyztMGZvXVVlUkYzKQSAgGyCeoRQ==
+  dependencies:
+    three-stdlib "^2.12.1"
+    zustand "^3.7.1"
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
@@ -8934,7 +8942,7 @@ three-mesh-bvh@^0.5.15:
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.16.tgz#ed8518355fb70d7da6a5537558ba43f76a56b067"
   integrity sha512-kN3QGKJNiQQcuiOsjVIkjtPnV3PJa+0Orih2E52afa+kQfs3zfoYt6Kxn6b6RNiAfaQ+7ckwPK0mTVFVl2F2LA==
 
-three-stdlib@^2.14.3:
+three-stdlib@^2.12.1, three-stdlib@^2.14.3:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.15.0.tgz#2f5c43ea95c8f6eb1add95dd0e7c5bd6ea769838"
   integrity sha512-81jgpEajYB1HczIKAqcG8oEgRPbKJr/8KfxMY3xIHe9kDNw426PckStLt+GVmV15ezOS+QlUFVSuyjSRPpSLsg==
