@@ -40,7 +40,11 @@ function App() {
       <Suspense fallback={<p>loading...</p>}>
         <ARButton />
         <Canvas>
-          <XR>
+          <XR
+            onSessionStart={() => {
+              alert("ar start");
+            }}
+          >
             <OrbitControls />
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
