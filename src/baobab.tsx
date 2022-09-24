@@ -1,6 +1,6 @@
 import React from "react";
 import { Euler, Vector3 } from "three";
-import Branch from "./branch";
+import BaobabBranch from "./baobab-branch";
 
 export type BranchType = "cylinder" | "cone";
 
@@ -13,12 +13,12 @@ type Props = {
   branchHeight: number;
 };
 
-const Tree = ({ angle, branchHeight, ...props }: Props) => {
+const Baobab = ({ angle, branchHeight, ...props }: Props) => {
   const position = new Vector3(0, 0, 0);
   const rotation = new Euler(0, 0, 0);
   const scale = 1;
   return (
-    <Branch
+    <BaobabBranch
       position={position}
       rotation={rotation}
       scale={scale}
@@ -29,4 +29,4 @@ const Tree = ({ angle, branchHeight, ...props }: Props) => {
   );
 };
 
-export default Tree;
+export default Baobab;

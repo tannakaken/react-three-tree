@@ -2,7 +2,7 @@ import React from "react";
 import { Cone, Cylinder, Sphere } from "@react-three/drei";
 import { Vector3, Euler, Quaternion, Color } from "three";
 import { forEachUntil } from "./helpers/list.helpers";
-import { BranchType } from "./tree";
+import { BranchType } from "./baobab";
 
 type Props = {
   scale: number;
@@ -17,7 +17,7 @@ type Props = {
   branchHeight: number;
 };
 
-const Branch = (props: Props) => {
+const BaobabBranch = (props: Props) => {
   const {
     scale,
     position,
@@ -65,7 +65,7 @@ const Branch = (props: Props) => {
           const branchAngle = (2 * Math.PI * index) / branching;
           const axisY = new Vector3(0, 1, 0);
           return (
-            <Branch
+            <BaobabBranch
               {...props}
               key={`branch-${currentDepth}-${index}`}
               position={position
@@ -97,4 +97,4 @@ const Branch = (props: Props) => {
   );
 };
 
-export default Branch;
+export default BaobabBranch;
