@@ -1,4 +1,3 @@
-import { useHitTest } from "@react-three/xr";
 import React from "react";
 import { Euler, Vector3 } from "three";
 import Branch from "./branch";
@@ -14,11 +13,6 @@ const Tree = ({ depth, branching, angle, noise = 0 }: Props) => {
   const position = new Vector3(0, 0, 0);
   const rotation = new Euler(0, 0, 0);
   const scale = 1;
-
-  useHitTest((hitMatrix, _) => {
-    alert("hello");
-    position.applyMatrix4(hitMatrix);
-  });
   return (
     <Branch
       position={position}
