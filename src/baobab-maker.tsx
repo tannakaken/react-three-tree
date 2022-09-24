@@ -7,11 +7,13 @@ import React, {
 } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { button, useControls } from "leva";
+import { button, Leva, useControls } from "leva";
+import ReactModal from "react-modal";
 import Baobab, { BranchType } from "./baobab";
 
 function BaobabMaker() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const parameters = useControls({
     depth: {
       value: 3,
@@ -53,7 +55,7 @@ function BaobabMaker() {
       label: "枝の生える高さ",
     },
     about: {
-      ...button(() => console.warn("about")),
+      ...button(() => setIsInfoOpen(true)),
       label: "このサイトについて",
     },
   });
@@ -101,6 +103,49 @@ function BaobabMaker() {
       <button className="video-button" onClick={() => setVideoOn(!videoOn)}>
         {videoOn ? "カメラ停止" : "カメラ起動"}
       </button>
+      <ReactModal
+        isOpen={isInfoOpen}
+        onRequestClose={() => setIsInfoOpen(false)}
+        contentLabel="Info Modal"
+        style={{
+          content: {
+            borderRadius: "20px",
+          },
+        }}
+      >
+        <div>
+          <h2>バオバブメーカー</h2>
+          <p>
+            このサイトは<strong>再帰的構造</strong>による
+            <strong>フラクタル</strong>を使って様々な
+            <strong>バオバブ</strong>
+            を作成し、現実世界に置くことができるサイトです。
+          </p>
+          <p>現実に存在しないバオバブを作ってみましょう。</p>
+          <p>ちなみにバオバブジュースはねっとり甘くて美味しいですよ。</p>
+          <p>
+            製作者:
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://tannakaken.xyz/"
+            >
+              淡中圏
+            </a>
+            （twitter:
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/tannakaken"
+            >
+              @tannakaken
+            </a>
+            ）
+          </p>
+          <button onClick={() => setIsInfoOpen(false)}>閉じる</button>
+        </div>
+      </ReactModal>
+      <Leva hidden={isInfoOpen} />
     </>
   );
 }
