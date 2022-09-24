@@ -72,6 +72,10 @@ function App() {
       await videoRef.current.play();
     } else {
       videoRef.current.pause();
+      const mediaStream = videoRef.current.srcObject as MediaStream;
+      mediaStream.getTracks().forEach((track) => {
+        track.stop();
+      });
       videoRef.current.srcObject = null;
       videoRef.current.load();
     }
@@ -90,34 +94,8 @@ function App() {
           <Tree {...parameters} />
         </Canvas>
       </Suspense>
-      <video
-        style={{
-          background: "white",
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-          top: 0,
-          left: 0,
-          objectFit: "cover",
-        }}
-        ref={videoRef}
-        playsInline
-      />
-      <button
-        style={{
-          position: "absolute",
-          bottom: "10px",
-          left: "50%",
-          transform: "translate(-50%, 0)",
-          width: "100px",
-          height: "40px",
-          border: "none",
-          background: "lightgrey",
-          color: "grey",
-        }}
-        onClick={() => setVideoOn(!videoOn)}
-      >
+      <video className="video" ref={videoRef} playsInline />
+      <button className="video-button" onClick={() => setVideoOn(!videoOn)}>
         {videoOn ? "カメラ停止" : "カメラ起動"}
       </button>
     </div>
