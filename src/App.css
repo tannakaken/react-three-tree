@@ -3,6 +3,47 @@
   height: 100vh;
 }
 
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 2em;
+  background: linear-gradient(green,green,brown);
+  background-clip: text;
+  font-weight: 900;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+  animation-name: phade;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+}
+
+@keyframes phade {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .video {
   background: white;
   position: absolute;
