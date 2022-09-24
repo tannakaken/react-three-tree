@@ -48,6 +48,7 @@ const Branch = ({
           const axisY = new Vector3(0, 1, 0);
           return (
             <Branch
+              key={`branch-${currentDepth}-${index}`}
               position={position
                 .clone()
                 .add(

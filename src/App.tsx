@@ -43,6 +43,7 @@ function App() {
         video: {
           width: 1280,
           height: 720,
+          facingMode: { ideal: "environment" },
         },
         audio: false,
       });
