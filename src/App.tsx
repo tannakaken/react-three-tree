@@ -7,6 +7,7 @@ import Tree from "./tree";
 
 function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const parameters = useControls({
     depth: {
       value: 3,
@@ -34,8 +35,31 @@ function App() {
     },
     video: false,
   });
+  const drawCanvas = useCallback(() => {
+    if (videoRef.current === null) {
+      return;
+    }
+    if (canvasRef.current === null) {
+      return;
+    }
+    const ctx = canvasRef.current.getContext("2d");
+    if (ctx === null) {
+      return;
+    }
+    ctx.drawImage(
+      videoRef.current,
+      0,
+      0,
+      canvasRef.current.width,
+      canvasRef.current.height
+    );
+    requestAnimationFrame(drawCanvas);
+  }, []);
   const toggleCamera = useCallback(async () => {
     if (videoRef.current === null) {
+      return;
+    }
+    if (canvasRef.current === null) {
       return;
     }
     if (parameters.video) {
@@ -49,16 +73,23 @@ function App() {
       });
       videoRef.current.srcObject = mediaStream;
       await videoRef.current.play();
+      requestAnimationFrame(drawCanvas);
     } else {
       videoRef.current.pause();
       videoRef.current.srcObject = null;
       videoRef.current.load();
+      const ctx = canvasRef.current.getContext("2d");
+      if (ctx === null) {
+        return;
+      }
+      ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
-  }, [parameters.video]);
+  }, [parameters.video, drawCanvas]);
 
   useEffect(() => {
     toggleCamera();
   }, [toggleCamera]);
+
   return (
     <div className="App">
       <Suspense fallback={<p>loading...</p>}>
@@ -69,7 +100,7 @@ function App() {
           <Tree {...parameters} />
         </Canvas>
       </Suspense>
-      <video
+      <canvas
         style={{
           background: "white",
           position: "absolute",
@@ -79,6 +110,12 @@ function App() {
           top: 0,
           left: 0,
           objectFit: "cover",
+        }}
+        ref={canvasRef}
+      />
+      <video
+        style={{
+          display: "hidden",
         }}
         ref={videoRef}
       />
