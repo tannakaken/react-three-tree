@@ -113,7 +113,7 @@ function BaobabMaker() {
           },
         }}
       >
-        <div>
+        <div className="info">
           <h2>バオバブメーカー</h2>
           <p>
             このサイトは<strong>再帰的構造</strong>による
@@ -142,6 +142,17 @@ function BaobabMaker() {
             </a>
             ）
           </p>
+          <figure>
+            <img
+              alt="マグリットを改変した自画像"
+              src="Abstract_Idea.jpg"
+              className="abstract-idea"
+            />
+            <figcaption>
+              上記の自画像はパブリックドメインになったマグリットの絵『Abstract
+              Idea』を改変したものです。
+            </figcaption>
+          </figure>
           <button onClick={() => setIsInfoOpen(false)}>閉じる</button>
         </div>
       </ReactModal>

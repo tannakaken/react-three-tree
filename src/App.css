@@ -66,3 +66,31 @@
   background-color: lightgrey;
   color: grey;
 }
+
+.info {
+  font-size: small;
+}
+
+.info h2 {
+  font-size: large;
+}
+
+.info p {
+  line-height: 1.2em;
+  margin-bottom: 0.5px;
+}
+
+figure {
+  margin: 0;
+}
+
+.abstract-idea {
+  height: 400px;
+}
+
+@media screen and (max-width: 767px)  {
+  .abstract-idea {
+    height: unset;
+    width: 180px;
+  } 
+}
