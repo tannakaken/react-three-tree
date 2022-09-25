@@ -114,7 +114,7 @@ function BaobabMaker() {
         }}
       >
         <div className="info">
-          <h2>バオバブメーカー</h2>
+          <h2>バオバブメイカー</h2>
           <p>
             このサイトは<strong>再帰的構造</strong>による
             <strong>フラクタル</strong>を使って様々な
@@ -153,6 +153,16 @@ function BaobabMaker() {
               Idea』を改変したものです。
             </figcaption>
           </figure>
+          <p>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://tannakaken.xyz/novels/TreeMaker"
+            >
+              小説
+            </a>
+            なんかも書いてます。
+          </p>
           <button onClick={() => setIsInfoOpen(false)}>閉じる</button>
         </div>
       </ReactModal>

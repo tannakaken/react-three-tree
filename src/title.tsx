@@ -5,7 +5,7 @@ import Baobab from "./baobab";
 function Title() {
   return (
     <>
-      <h1 className="title">バオバブメーカー</h1>
+      <h1 className="title">バオバブメイカー</h1>
       <Suspense fallback={<p>loading...</p>}>
         <Canvas>
           <ambientLight />
