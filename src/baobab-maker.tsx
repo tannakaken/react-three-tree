@@ -11,6 +11,14 @@ import { button, Leva, useControls } from "leva";
 import ReactModal from "react-modal";
 import Baobab, { BranchType } from "./baobab";
 
+const convertBranchType = (str: string): BranchType => {
+  if (str === "円柱") {
+    return "cylinder";
+  } else {
+    return "cone";
+  }
+};
+
 function BaobabMaker() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
@@ -44,7 +52,7 @@ function BaobabMaker() {
       label: "ノイズ",
     },
     branchType: {
-      options: ["cylinder", "cone"] as BranchType[],
+      options: ["円柱", "円錐"],
       label: "枝の種類",
     },
     branchHeight: {
@@ -96,7 +104,10 @@ function BaobabMaker() {
           <OrbitControls />
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
-          <Baobab {...parameters} />
+          <Baobab
+            {...parameters}
+            branchType={convertBranchType(parameters.branchType)}
+          />
         </Canvas>
       </Suspense>
       <video className="video" ref={videoRef} playsInline />
